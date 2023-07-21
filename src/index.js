@@ -28,7 +28,7 @@ async function makeGetRequest(url, m) {
 
 async function GetTotalEntires(m) {
   try {
-    const url = 'https://steamcommunity.com/id/Calwaelf/myworkshopfiles/?appid=311210';
+    const url = 'https://steamcommunity.com/profiles/76561198906367092/myworkshopfiles/?appid=311210';
     await makeGetRequest(url,m);
   } catch (error) {
     m.reply("Oh shit I broke")
@@ -49,8 +49,10 @@ client.on("messageCreate", (m) => {
   if (m.author.bot) {
     return;
   } 
-  // TODO: Allow the bot to read the message before it replies. It will look for a specific key word before it replies with the total amount of entires.  
-  GetTotalEntires(m)
+  if (m.content.includes("wake up sped")){
+    // TODO: Allow the bot to read the message before it replies. It will look for a specific key word before it replies with the total amount of entires.  
+    GetTotalEntires(m)
+  }
 });
 
 client.login( process.env.TOKEN );
